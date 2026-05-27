@@ -1,0 +1,3 @@
+Set: 00007
+Source: C:/Users/esmev/Documents/textures/metals-ue/Copper-scuffed_Unreal-Engine
+Normal map type: OpenGL

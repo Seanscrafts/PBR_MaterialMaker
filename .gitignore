@@ -1,0 +1,29 @@
+# Generated textures — do not commit
+*.png
+*.jpg
+*.jpeg
+*.exr
+*.tiff
+*.tga
+
+# Output folders
+textures/
+UnrealMats/
+RhinoMats/
+output/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude Code internal files
+.claude/
+.mcp.json
+
+# Unreal auto-generated / large folders
+Comfy_unreal_tests/
+PBRFusionPortable*/

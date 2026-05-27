@@ -1,0 +1,3 @@
+Set: 00005
+Source: C:/Users/esmev/Documents/textures/metals-ue/alien-metal1-ue
+Normal map type: DirectX

@@ -1,0 +1,3 @@
+Set: 00006
+Source: C:/Users/esmev/Documents/textures/metals-ue/antique-grate1-ue
+Normal map type: OpenGL
