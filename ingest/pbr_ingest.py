@@ -15,7 +15,7 @@ CHANNEL_KEYWORDS = {
 }
 
 # Segments that mean "skip this file entirely"
-SKIP_WORDS = {"preview", "ao", "occlusion", "ambient", "thumbnail", "thumb"}
+SKIP_WORDS = {"preview", "thumbnail", "thumb"}
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".tga", ".exr", ".tiff", ".tif"}
 
@@ -61,13 +61,13 @@ def detect_normal_type(filename):
 
 
 def next_set_number(folder):
-    """Find the next unused set number by scanning existing files."""
-    existing = set()
+    """Anchor to the highest BaseColor set number already in the folder."""
+    highest = 0
     for fname in os.listdir(folder):
-        parts = fname.split("_")
-        if len(parts) >= 2 and parts[1].isdigit():
-            existing.add(int(parts[1]))
-    return max(existing, default=0) + 1
+        m = re.match(r"^BaseColor_(\d+)_", fname)
+        if m:
+            highest = max(highest, int(m.group(1)))
+    return highest + 1
 
 
 # ── Interactive prompts ────────────────────────────────────────────────────────

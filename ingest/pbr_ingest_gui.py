@@ -25,7 +25,7 @@ CHANNEL_KEYWORDS = {
     "Displacement": ["displacement", "disp", "height", "depth"],
 }
 
-SKIP_WORDS   = {"preview", "ao", "occlusion", "ambient", "thumbnail", "thumb"}
+SKIP_WORDS   = {"preview", "thumbnail", "thumb"}
 IMAGE_EXTS   = {".png", ".jpg", ".jpeg", ".tga", ".exr", ".tiff", ".tif"}
 NOT_FOUND    = "(not found)"
 
@@ -133,7 +133,7 @@ class PBRIngestApp:
             self.dropdown_menus[channel] = menu
 
         # ── Normal map type ────────────────────────────────────────────────────
-        nrm_frame = tk.LabelFrame(self.root, text="  Normal Map Type  ", padx=12, pady=8)
+        nrm_frame = tk.LabelFrame(self.root, text="  What is the normal map type?  ", padx=12, pady=8)
         nrm_frame.pack(fill=tk.X, padx=PX, pady=4)
 
         tk.Radiobutton(nrm_frame,
@@ -142,6 +142,11 @@ class PBRIngestApp:
         tk.Radiobutton(nrm_frame,
                        text="OpenGL    (Rhino / Blender)",
                        variable=self.normal_type, value="OpenGL").pack(anchor="w")
+
+        tk.Label(nrm_frame,
+                 text="OpenGL maps will be converted to DirectX on import. Rhino flips them back automatically.",
+                 fg="#888", font=("TkDefaultFont", 8), wraplength=420, justify="left"
+                 ).pack(anchor="w", pady=(4, 0))
 
         # ── Import button ──────────────────────────────────────────────────────
         ttk.Separator(self.root, orient="horizontal").pack(

@@ -69,6 +69,12 @@ TEXTURE_PARAMS = {
         "compression": unreal.TextureCompressionSettings.TC_MASKS,
         "flip_green": False,
     },
+    "Ambient Occlusion A": {
+        "keywords": ["ao", "ambientocclusion", "occlusion"],
+        "srgb": False,
+        "compression": unreal.TextureCompressionSettings.TC_MASKS,
+        "flip_green": False,
+    },
 }
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

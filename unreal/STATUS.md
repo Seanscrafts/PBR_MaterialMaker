@@ -108,8 +108,9 @@ Location: `Content/SenseiMaterials/Materials/`
 | Roughness | `Roughness A` | TC_MASKS |
 | Metallic / metalness | `Metallic A` | TC_MASKS |
 | Height / displacement | `Height A` | TC_MASKS |
+| AO (`AO_` prefix) | `Ambient Occlusion A` | TC_MASKS |
 
-Also available (not wired to CHORD): `Ambient Occlusion A`, `MaskORM A`, `Height Blend A`
+Also available (not wired to CHORD): `MaskORM A`, `Height Blend A`
 Useful scalars per layer: `Size A` (tiling), `Roughness Strength A`, `Normal Strength A`, `Displacement Amount A`
 Independent X/Y tiling via Vector param `Tiling A` (X=tileX, Y=tileY) — built in to this material.
 

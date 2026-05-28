@@ -109,17 +109,39 @@ Uses Python 3.14 (installed 2026-05-27) + tkinter. Folder picker → auto-detect
 
 ---
 
-## Pending fix — Rhino material type (next session)
+## Rhino material type fix ✅ (2026-05-28)
 
-**Problem:** `rhino_import.py` creates a **Custom** material instead of **Physically Based**.
-Only BaseColor and Normal load. Roughness, Metalness and Displacement are silently ignored
-because those slots don't exist on a Custom material type.
+`create_pbr_material()` in `C:\ai\PBR_TORHINO\rhino_import.py` rewritten to use the `mat.PhysicallyBased` interface. All 5 channels now load correctly. Material shows as Physically Based in the Rhino material editor.
 
-**Fix needed:** Rewrite `create_pbr_material()` in `C:\ai\PBR_TORHINO\rhino_import.py`
-to use the `mat.PhysicallyBased` interface so all 5 channels load and the material
-shows as Physically Based type in the Rhino material editor.
+---
 
-**Reference:** See `C:\ai\PBR_TORHINO\STATUS.md` task #7.
+## Pending fixes — Ingest + Numbering (next sessions)
+
+### Fix 1 — Ingest GUI normal map wording ✅ (2026-05-28)
+- Group label changed to `What is the normal map type?`
+- Grey note added below radio buttons: *"OpenGL maps will be converted to DirectX on import. Rhino flips them back automatically."*
+- File: `C:\ai\PBR_Textures\pbr_ingest_gui.py`
+
+---
+
+### Fix 2 — AO skipping in ingest ✅ (2026-05-28)
+- Removed `"ao"`, `"occlusion"`, and `"ambient"` from SKIP_WORDS in both `pbr_ingest.py` and `pbr_ingest_gui.py`
+- SKIP_WORDS now contains only: `"preview"`, `"thumbnail"`, `"thumb"`
+
+---
+
+### Fix 3 — Set numbering: BaseColor anchors the number
+**Problem:** Each channel is numbered independently. If a drag-and-drop pack is missing a channel, that channel's counter skips a number while others don't. ComfyUI has its own internal counter and does not know about gaps left by ingest. Result: channels from the same set end up with different numbers and the import scripts cannot pair them.
+
+**Fix — standard to adopt:**
+- The set number is always determined by the **BaseColor/Albedo** file
+- All other channels in the same set (Normal, Roughness, Metalness, Displacement, AO) use that exact same number
+- If a channel is missing from a pack, there is simply no file for it — the number is not used for that channel, and the next pack still increments from the last BaseColor number
+- Both `pbr_ingest.py` and the ComfyUI workflow must agree on the next available number by reading the highest existing BaseColor number in `PBR_Textures` and adding 1
+
+**Files to change:**
+- `C:\ai\PBR_Textures\pbr_ingest.py` — rewrite numbering logic to anchor on BaseColor
+- ComfyUI workflow JSONs in `C:\ai\PBR_TOUNREAL\workflows\` — fix counter to read max BaseColor number from `PBR_Textures` folder, not use an internal per-channel counter
 
 ---
 
