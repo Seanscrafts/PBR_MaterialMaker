@@ -1,5 +1,5 @@
 {
-  "texture_output_folder": "C:\\AI\\PBR_Textures",
+  "texture_output_folder": "C:\\ai\\PBR\\PBR_Textures",
   "master_material_path": "/Game/SenseiMaterials/Materials/M_BlendMaster_Nanite",
   "mi_folder": "/Game/3dTextures/MaterialInstances",
   "texture_base_folder": "/Game/3dTextures/Textures",

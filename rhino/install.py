@@ -13,7 +13,7 @@ RHINO_SCRIPTS_DIR = Path(os.environ["APPDATA"]) / "McNeel" / "Rhinoceros" / "8.0
 
 
 def ask_texture_output_folder():
-    default = r"C:\AI\PBR_Textures"
+    default = r"C:\ai\PBR\PBR_Textures"
     answer = input(f"Enter the full path where ComfyUI saves textures (press Enter for default: {default}): ").strip().strip('"')
     texture_path = Path(answer) if answer else Path(default)
 
@@ -77,3 +77,5 @@ Or create a toolbar button in Rhino with this command:
 
 if __name__ == "__main__":
     main()
+
+
