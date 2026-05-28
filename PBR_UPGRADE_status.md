@@ -74,6 +74,20 @@
 
 ---
 
+## Next session — to do
+
+### Issue 1 — Rhino normal map conversion
+- `rhino_import.py` currently loads normal maps as-is
+- Needs to detect OpenGL vs DirectX and flip the green channel on import if OpenGL
+- The ingest GUI already asks about normal map type — the Rhino script needs to do the same or read that info
+
+### Issue 2 — Unreal missing channels on import
+- Metalness, Height/Displacement slots not being assigned when importing
+- Material is created but those slots appear empty (no error thrown)
+- Needs investigation: check parameter names in `unreal_textureimport.py` match what the master material expects
+
+---
+
 ## Installing on a new machine
 
 1. **Clone the repo:**
